@@ -4,6 +4,8 @@ const tseslint = require('typescript-eslint')
 const angular = require('angular-eslint')
 const prettierPlugin = require('eslint-plugin-prettier')
 const globals = require('globals')
+const ngrx = require('@ngrx/eslint-plugin/v9')
+const prettierConfig = require('eslint-config-prettier')
 
 module.exports = tseslint.config(
   ...tseslint.configs.recommended,
@@ -13,11 +15,13 @@ module.exports = tseslint.config(
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
       ...tseslint.configs.stylistic,
-      ...angular.configs.tsRecommended
+      ...angular.configs.tsRecommended,
+      ...ngrx.configs.all
     ],
     plugins: {
       prettier: prettierPlugin,
-      '@typescript-eslint': tseslint.plugin
+      '@typescript-eslint': tseslint.plugin,
+      '@ngrx': ngrx
     },
     languageOptions: {
       parser: tseslint.parser,
@@ -31,6 +35,8 @@ module.exports = tseslint.config(
     },
     processor: angular.processInlineTemplates,
     rules: {
+      ...prettierConfig.rules,
+      'prettier/prettier': 'warn',
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }]
     },

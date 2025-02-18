@@ -1,0 +1,6 @@
+<h1>Counter Val is {{ countVal$ | async }}</h1>
+
+<button type="button" (click)="onDecrease()">-1</button>
+<button type="button" (click)="onIncrease()">+1</button>
+
+<counter-child (increaseEmit)="onIncrease()" />
