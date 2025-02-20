@@ -11,6 +11,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideStore({ root: rootReducer }),
-    provideStoreDevtools({ logOnly: true })
+    provideStoreDevtools({ logOnly: false })
   ]
 }
